@@ -1,3 +1,5 @@
+# This script limits the tips lables of a phylogenetic tree to 10 character.
+
 from Bio import Phylo
 
 def limit_tip_labels(tree, max_length=10):
