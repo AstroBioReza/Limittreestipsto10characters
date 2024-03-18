@@ -1,0 +1,19 @@
+from Bio import Phylo
+
+def limit_tip_labels(tree, max_length=10):
+    for leaf in tree.get_terminals():
+        if len(leaf.name) > max_length:
+            leaf.name = leaf.name[:max_length]
+
+# Load the tree from Newick format
+newick_file = r"C:\Users\morez\Desktop\Final_OSC_Seqs_fa_tree(1).treefile"  #set the input file path
+tree = Phylo.read(newick_file, "newick")
+
+# Limit tip labels to 10 characters
+limit_tip_labels(tree)
+
+# Save the modified tree
+output_file = r"C:\Users\morez\Desktop\limited_tip_labels_tree.treefile"  # set the output path
+Phylo.write(tree, output_file, "newick")
+
+print(f"Modified tree with limited tip labels saved to '{output_file}'")
